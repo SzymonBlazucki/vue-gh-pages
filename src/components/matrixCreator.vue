@@ -117,7 +117,7 @@
 <button @click='button = 1'>Compute</button>
 <button @click='button = 0'>Reset</button>
     <span v-if="button === 1">
-  <mat :initial="[1/3, 1/3, 1/3]" :matr='createMatrix(value1, value2, value3, value4, value5, value6, value7, value8, value9)'></mat>
+  <mat :key="`value1-${value1}`" :initial="[1/3, 1/3, 1/3]" :matr='createMatrix(value1, value2, value3, value4, value5, value6, value7, value8, value9)'></mat>
     </span >
   
   </div>

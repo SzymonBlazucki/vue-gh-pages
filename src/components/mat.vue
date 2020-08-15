@@ -1,18 +1,18 @@
 <template>
-<div>
-  <br/>
-  <h5> Initial Conditions </h5>
+  <div>
+    <br/>
+    <h5> Initial Conditions </h5>
     <KetViewer :vector="start" :dark-mode="false"/> <br/>
-  <h5> Operation </h5>
+    <h5> Operation </h5>
     <MatrixViewer :operator-raw="vis" :dark-mode="false"/> <br/>
-  <h5> product vector </h5>
+    <h5> product vector </h5>
     <KetViewer :vector="end" :dark-mode="false"/> <br/>
     <visOnHov :hover="hov" :leftBeam="initial"/>
   </div>
 
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { Dimension, Vector, Cx, Operator } from "quantum-tensors";
 import { KetViewer, MatrixViewer } from "bra-ket-vue";
 import visOnHov from './visOnHov.vue';

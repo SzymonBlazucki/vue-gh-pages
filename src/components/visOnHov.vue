@@ -1,37 +1,77 @@
 <template>
-<div>
-  <svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" id="mouse" :fill="start" :opacity="opa" v-on:mouseover="mouseover" v-on:mouseleave="mouseleave"/>
-</svg>
-<svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" id="mouse" :fill="filling" :opacity="opa" v-on:mouseover="mouseover" v-on:mouseleave="mouseleave"/>
-</svg>
-<br/>
-<svg width="200" height="100" class="back">
-  <path d="m0 50 l200 0" :stroke="startComp" stroke-width="10"/>
-</svg>
-<svg width="25" height="100" class="back">
-  <rect width="25" height="100" rx="5" ry="5" fill="black" stroke-width='0' />
-  <text x="2" y="54" fill="white">Op</text>
-</svg>
-<svg width="200" height="100" class="back">
-  <path d="m0 50 l200 0" :stroke="abc" stroke-width="10"/>
-</svg>
-
-  
-</div>
+  <div>
+    <svg
+      width="300"
+      height="100"
+    >
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        class="light-blob"
+        :fill="colorBefore"
+      />
+      <circle
+        cx="150"
+        cy="50"
+        r="40"
+        class="light-blob"
+        :fill="colorAfter"
+      />
+    </svg>
+    <br>
+    <svg
+      width="400"
+      height="100"
+      class="back"
+    >
+      <path
+        d="m0 50 l 200 0"
+        :stroke="colorBefore"
+        stroke-width="20"
+        opacity="0.5"
+      />
+      <path
+        d="m200 50 l 200 0"
+        :stroke="colorAfter"
+        stroke-width="20"
+        opacity="0.5"
+      />
+      <path
+        d="m0 50 l 200 0"
+        :stroke="colorBefore"
+        stroke-width="10"
+      />
+      <path
+        d="m200 50 l 200 0"
+        :stroke="colorAfter"
+        stroke-width="10"
+      />
+      <rect
+        :x="200 - 15"
+        width="30"
+        height="100"
+        rx="5"
+        ry="5"
+        fill="blue"
+        stroke-width="0"
+      />
+      <text
+        :x="200 - 15"
+        y="54"
+        fill="white"
+      >Op</text>
+    </svg>
+  </div>
 </template>
 
 <script lang="ts">
 
 
 function giveColor(arr){
-const a = [];
-  for (let i=0;i<arr.length;i++){
-  a.push(arr[i]*255)
-  }
-  return ("rgb("+a[0]+","+a[1]+","+a[2]+")");
-  }
+  const a = arr.map((d) => Math.round(2 * d * 255));
+  return `rgb(${a.join(',')})`;
+}
 
 export default  {
   components: {
@@ -44,34 +84,24 @@ export default  {
       
 
   data: function() {
-      return{
-      abc: giveColor(this.hover),
-      filling: "#fff",
-      opa: 0.3,
-      start: "#fff",
-      startComp: giveColor(this.leftBeam)
+      return {
+      colorAfter: giveColor(this.hover),
+      colorBefore: giveColor(this.leftBeam)
   }},
-  methods: {
-    mouseover: function(){
-      this.start = this.startComp
-      this.filling = this.abc
-      this.opa = 1
-    },    
-    mouseleave: function(){
-      this.opa = 0.1
-    },
-  }
+  methods: {}
 }
 
 </script>
 
 <style>
-#mouse {
-    stroke:gray;
-    stroke-width: 2; 
+.light-blob {
+    opacity: 0.2
+}
+.light-blob:hover {
+    opacity: 1 
 }
 .back {
-  background-color:#00ccff
+  background-color:#000000
 }
 
 </style>
