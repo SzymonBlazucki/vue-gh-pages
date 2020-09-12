@@ -1,24 +1,22 @@
 <template>
   <div id="app">
-    {{title}}<br/>
+    {{ title }}<br>
     description - to be done later
     <!--<img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
     <h2> Filtration</h2>
-  <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix1'> </mat>
+    <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix1' />
     <h2> Fluorescence</h2>
-  <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix2'> </mat>
+    <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix2' />
     <h2> Another type of the fluorescence</h2>
-  <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix3'> </mat>
-  And now you can create your own operation. Just set up appropriate values in the input table and see what happens.
-  <button @click='refresh = 1'>Compute</button>
+    <mat :initial="[1/3, 1/3, 1/3]" :matr='matrix3' />
+    And now you can create your own operation. Just set up appropriate values in the input table and see what happens.
+    <button @click='refresh = 1'>Compute</button>
    
        
-  <matrixCreator/> 
-  <br/>
-
+    <matrixCreator /> 
+    <br>
   </div>
-
 </template>
 
 <script lang="ts">
@@ -30,7 +28,7 @@ import matrixCreator from './components/matrixCreator.vue';
 export default({
   components: {
     mat,
-    matrixCreator,
+    matrixCreator
   },
   data: function() {
     return {
